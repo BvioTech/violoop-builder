@@ -1,0 +1,51 @@
+FROM ubuntu:22.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+# install deps
+RUN apt update && apt install -y \
+    autoconf \
+    bc \
+    bison \
+    cpio \
+    curl \
+    device-tree-compiler \
+    expect \
+    fakeroot \
+    file \
+    flex \
+    g++ \
+    g++-multilib \
+    gawk \
+    gcc \
+    gcc-multilib \
+    git \
+    gperf \
+    libssl-dev \
+    libncurses5-dev \
+    make \
+    meson \
+    module-assistant \
+    ninja-build \
+    repo \
+    rsync \
+    ssh \
+    texinfo \
+    cmake \
+    unzip \
+    openssh-client \
+    openssh-server \
+    openssl \
+    passwd \
+    pkg-config \
+    python-is-python3 \
+    vim \
+    && rm -rf /var/lib/apt/lists/*
+
+ENV FORCE_UNSAFE_CONFIGURE=1
+
+WORKDIR /app
+
+CMD ["/bin/bash"]
+
+# docker build -t builder:base .

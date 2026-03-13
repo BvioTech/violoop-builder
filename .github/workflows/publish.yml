@@ -1,0 +1,30 @@
+name: Release toolchian
+
+on: 
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 1
+
+      - name: Package violoop-pro
+        run: |
+          tar -czf aarch64-none-linux-gnu.tar.gz -C violoop-pro .
+
+      - name: Create Release and Upload Assets
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: Release ${{ github.ref_name }}
+          files: |
+            aarch64-none-linux-gnu.tar.gz

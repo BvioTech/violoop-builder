@@ -1,0 +1,7 @@
+FROM builder:base
+
+COPY toolchain /workspace/toolchain
+COPY sysroot /workspace/sysroot
+COPY toolchain.cmake /workspace/
+
+# docker build -t builder:violoop-pro .
