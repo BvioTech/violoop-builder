@@ -1,7 +1,7 @@
 
 # set toolchain path and prefix
 set(WORKSPACE_ROOT "/workspace")
-set(TOOLCHAIN_PATH "${WORKSPACE_ROOT}/toolchain/arm-gnu-toolchain-12.3.rel1-x86_64-aarch64-none-linux-gnu")
+set(TOOLCHAIN_PATH "${WORKSPACE_ROOT}/toolchain/gcc-arm-10.3-2021.07-x86_64-aarch64-none-linux-gnu")
 set(TOOLCHAIN_PREFIX "aarch64-none-linux-gnu")
 
 # set compiler
