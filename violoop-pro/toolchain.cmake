@@ -26,4 +26,6 @@ set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
 
 set(CMAKE_C_FLAGS_INIT "-B${WORKSPACE_ROOT}/sysroot/usr/lib/aarch64-linux-gnu -isystem ${WORKSPACE_ROOT}/sysroot/usr/include/aarch64-linux-gnu")
+set(CMAKE_CXX_FLAGS_INIT "-B${WORKSPACE_ROOT}/sysroot/usr/lib/aarch64-linux-gnu -isystem ${WORKSPACE_ROOT}/sysroot/usr/include/aarch64-linux-gnu")
+
 set(CMAKE_EXE_LINKER_FLAGS_INIT "-Wl,-rpath-link,${WORKSPACE_ROOT}/sysroot/usr/lib/aarch64-linux-gnu")
