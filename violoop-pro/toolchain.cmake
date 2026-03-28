@@ -1,7 +1,7 @@
 
 # set toolchain path and prefix
 set(WORKSPACE_ROOT "/workspace")
-set(TOOLCHAIN_PATH "${WORKSPACE_ROOT}/toolchain/arm-gnu-toolchain-12.3.rel1-x86_64-aarch64-none-linux-gnu")
+set(TOOLCHAIN_PATH "${WORKSPACE_ROOT}/toolchain/gcc-arm-10.3-2021.07-x86_64-aarch64-none-linux-gnu")
 set(TOOLCHAIN_PREFIX "aarch64-none-linux-gnu")
 
 # set compiler
@@ -14,6 +14,7 @@ set(CMAKE_STRIP "${TOOLCHAIN_PATH}/bin/${TOOLCHAIN_PREFIX}-strip" CACHE FILEPATH
 set(CMAKE_OBJCOPY "${TOOLCHAIN_PATH}/bin/${TOOLCHAIN_PREFIX}-objcopy" CACHE FILEPATH "Objcopy")
 set(CMAKE_OBJDUMP "${TOOLCHAIN_PATH}/bin/${TOOLCHAIN_PREFIX}-objdump" CACHE FILEPATH "Objdump")
 
+set(CMAKE_SYSROOT "${WORKSPACE_ROOT}/sysroot")
 set(
   CMAKE_FIND_ROOT_PATH
   "${WORKSPACE_ROOT}/sysroot"
@@ -23,3 +24,8 @@ set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
 set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
+
+set(CMAKE_C_FLAGS_INIT "-B${WORKSPACE_ROOT}/sysroot/usr/lib/aarch64-linux-gnu -isystem ${WORKSPACE_ROOT}/sysroot/usr/include/aarch64-linux-gnu")
+set(CMAKE_CXX_FLAGS_INIT "-B${WORKSPACE_ROOT}/sysroot/usr/lib/aarch64-linux-gnu -isystem ${WORKSPACE_ROOT}/sysroot/usr/include/aarch64-linux-gnu")
+
+set(CMAKE_EXE_LINKER_FLAGS_INIT "-Wl,-rpath-link,${WORKSPACE_ROOT}/sysroot/usr/lib/aarch64-linux-gnu")
