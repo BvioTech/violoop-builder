@@ -1,0 +1,11 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${prefix}/lib/aarch64-linux-gnu
+includedir=${prefix}/include/aarch64-linux-gnu
+
+Name: libunwind
+Description: libunwind base library
+Version: 1.6.2
+Libs: -L${libdir} -lunwind
+Libs.private: -llzma 
+Cflags: -I${includedir}
