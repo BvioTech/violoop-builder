@@ -22,3 +22,12 @@ rsync -a --delete \
     "$DEST/"
 
 echo ">> done. $(du -sh "$DEST" | awk '{print $1}') in $DEST"
+
+# Force-add compiled host tool binaries (fixdep, modpost, etc.) that are
+# excluded by the kernel tree's own .gitignore files. These arm64 binaries
+# must be present in the tarball so CI can build modules without recompiling
+# the kernel's build infrastructure.
+SCRIPTS_DIR="violoop-pro/sysroot/usr/src/linux-headers-6.1-rockchip/scripts"
+echo ">> force-adding kernel host scripts (overriding kernel .gitignore)"
+git -C "$REPO_ROOT" add -f -- "$SCRIPTS_DIR/"
+echo ">> $(git -C "$REPO_ROOT" diff --cached --name-only -- "$SCRIPTS_DIR/" | wc -l) script files staged"
