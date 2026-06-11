@@ -12,7 +12,7 @@ SSH_HOST="${SSH_HOST:-dev11}"
 REMOTE_HEADERS="/usr/src/linux-headers-6.1-rockchip"
 
 REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-DEST="$REPO_ROOT/violoop-pro/kernel-headers/linux-headers-6.1-rockchip"
+DEST="$REPO_ROOT/violoop-pro/sysroot/usr/src/linux-headers-6.1-rockchip"
 
 mkdir -p "$DEST"
 
